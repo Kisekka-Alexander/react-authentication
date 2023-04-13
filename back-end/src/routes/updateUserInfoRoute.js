@@ -1,5 +1,5 @@
-import { Jwt } from "jsonwebtoken";
-import { objectID } from 'mongodb';
+import jwt from 'jsonwebtoken'
+import { ObjectID } from 'mongodb';
 import { getDbConnection } from "../db";
 
 export const updateUserInfoRoute = {
@@ -9,7 +9,7 @@ export const updateUserInfoRoute = {
         const { authorization } = req.headers
         const { userId } = req.params
 
-        const updates = ({
+        const updates = (({
             favoriteFood,
             hairColor,
             bio
@@ -18,7 +18,7 @@ export const updateUserInfoRoute = {
             hairColor,
             bio
 
-        })(req.body)
+        }))(req.body)
 
         if(!authorization){
             return res.status(401).json({message: 'No authrization header sent'})
@@ -34,7 +34,7 @@ export const updateUserInfoRoute = {
 
             const db = getDbConnection('react-auth-db')
             const result = await db.collection('users').findOneAndUpdate(
-                {_id: objectID(id) },
+                {_id: ObjectID(id) },
                 {$set: {info: updates} },
                 {returnOriginal: false },
             )
