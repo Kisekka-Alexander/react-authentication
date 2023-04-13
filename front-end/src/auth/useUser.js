@@ -6,8 +6,6 @@ export const useUser = () => {
 
     const getPayLoadFromToken = token_ => {
         const encodedPayLoad = token_.split('.')[1]
-        console.log(encodedPayLoad)
-        console.log(atob(encodedPayLoad))
         return JSON.parse(atob(encodedPayLoad))
     }
 

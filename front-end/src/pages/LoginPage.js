@@ -18,7 +18,7 @@ export const LogInPage = () => {
             email: emailValue,
             password: passwordValue
         })
-        const token = response.data
+        const {token } = response.data
         setToken(token)
         history.push('/')
     }
