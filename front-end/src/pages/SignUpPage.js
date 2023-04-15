@@ -20,12 +20,13 @@ export const SignUpPage = () => {
 
         const { token } = response.data
         setToken(token)
-        history.push('/')
+        history.push('/please-verify')
     }
     return(
         <div className="content-container">
             <h1>Sign Up</h1>
             {errorMessage && <div className="fail">{errorMessage}</div>}
+            
             <input 
             type="email"
             value={emailValue}
